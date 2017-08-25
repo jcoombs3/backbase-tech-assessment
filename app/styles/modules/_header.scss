@@ -1,0 +1,51 @@
+#header {
+    width: 100%;
+    height: $headerHeight;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: $white;
+    background-size: 20%;
+    border-bottom: 3px solid $orange;
+    border-top: 1px solid $orange;
+    @include box-shadow();
+    
+    .main-wrapper {
+        @include vertical-align();
+        max-height: 95%;
+    }
+    
+    img {
+        width: 300px;
+        max-height: 100%;
+    }
+    
+    @media #{$media-mobile} {
+        position: fixed;
+        z-index: 50;
+        
+        img {
+            width: 200px;
+        }
+    }
+}
+
+#btn-transactions {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 66px;
+    height: 100%;
+    background: $teal url('../images/exchange.png') 50% 50% no-repeat;
+    background-size: 30px;
+    @include transition(background-color 300ms ease);
+    
+    &:active {
+        background-color: $teal_dark;
+    }
+    
+    @media #{$media-mobile} {
+        display: block;
+    }
+}

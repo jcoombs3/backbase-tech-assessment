@@ -1,0 +1,14 @@
+.main-wrapper {
+    width: 100%;
+    padding: 0 $padding_large;
+    margin: 0;
+    
+    .wrapper_inner {
+        max-width: $max_width;
+        margin: 0 auto;
+    }
+    
+    @media #{$media-mobile} {
+        padding: 0 $padding_small;
+    }
+}

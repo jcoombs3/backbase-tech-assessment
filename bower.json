@@ -1,0 +1,11 @@
+{
+  "name": "backbase",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "1.5.9",
+    "angular-ui-router": "~0.2.11",
+    "jquery": "~2.1.1",
+    "angular-input-masks": "^2.6.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,181 @@
+// ----------------------------------------------------
+// FONTS
+// ----------------------------------------------------
+
+$fallback: verdana, sans-serif; 
+
+@mixin kanit {
+    font-family: 'Kanit', $fallback;
+    font-weight: normal;
+}
+
+@mixin kahit_bold {
+    font-family: 'Kanit', $fallback;
+    font-weight: bold;
+}
+
+@font-face {
+  font-family: 'kahit';
+  src: url('https://fonts.googleapis.com/css?family=Kanit');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-wsxd82');
+	src:url('fonts/icomoon.eot?#iefix-wsxd82') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-wsxd82') format('truetype'),
+		url('fonts/icomoon.woff?-wsxd82') format('woff'),
+		url('fonts/icomoon.svg?-wsxd82#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"], .icomoon {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-backtotop:before {
+	content: "\e900";
+}
+.icon-header-client-lock:before {
+	content: "\e901";
+}
+.icon-heartopen:before {
+	content: "\e902";
+}
+.icon-heartsolid:before {
+	content: "\e903";
+}
+.icon-info:before {
+	content: "\e904";
+}
+//.icon-opt-out-01 .path1:before {
+//	content: "\e905";
+//	color: rgb(0, 0, 0);
+//}
+//.icon-opt-out-01 .path2:before {
+//	content: "\e906";
+//	margin-left: -1em;
+//	color: rgb(0, 0, 0);
+//}
+//.icon-opt-out-01 .path3:before {
+//	content: "\e907";
+//	margin-left: -1em;
+//	color: rgb(0, 0, 0);
+//}
+//.icon-opt-out-01 .path4:before {
+//	content: "\e908";
+//	margin-left: -1em;
+//	color: rgb(255, 255, 255);
+//}
+.icon-opt-out-02:before {
+	content: "\e909";
+}
+.icon-plusicon:before {
+	content: "\e90a";
+}
+.icon-shareicon:before {
+	content: "\e90b";
+}
+.icon-global-caret-left:before {
+	content: "\e600";
+}
+.icon-global-caret-right:before {
+	content: "\e601";
+}
+.icon-global-caret-up:before {
+	content: "\e602";
+}
+.icon-global-caret-down:before {
+	content: "\e65c";
+}
+.icon-magnifying_glass:before {
+	content: "\e603";
+}
+.icon-do_not_contact:before {
+	content: "\e604";
+}
+.icon-lockmode_addnewclient:before {
+	content: "\e605";
+}
+.icon-star:before {
+	content: "\e606";
+}
+.icon-attachment_paperclip:before {
+	content: "\e607";
+}
+.icon-camera_barcode:before {
+	content: "\e608";
+}
+.icon-calendar:before {
+	content: "\e609";
+}
+.icon-manage_client:before {
+	content: "\e60a";
+}
+.icon-refresh:before {
+	content: "\e60b";
+}
+.icon-edit_delete:before {
+	content: "\e60c";
+}
+.icon-uniE60D:before {
+	content: "\e60d";
+}
+.icon-uniE60E:before {
+	content: "\e60e";
+}
+.icon-uniE60F:before {
+	content: "\e60f";
+}
+.icon-uniE610:before {
+	content: "\e610";
+}
+.icon-carousel_03:before {
+	content: "\e611";
+}
+.icon-x:before {
+	content: "\e612";
+}
+.icon-check:before {
+	content: "\e613";
+}
+.icon-not-applicable:before {
+	content: "\e614";
+}
+.icon-check-box:before {
+	content: "\e615";
+}
+.icon-global-arrow-left:before {
+	content: "\e65a";
+}
+.icon-global-arrow-right:before {
+	content: "\e65b";
+}
+.icon-feed-camera:before {
+	content: "\e65d";
+}
+.icon-header-account:before {
+	content: "\e65e";
+}
+.icon-header-lock:before {
+	content: "\e65f";
+}
+.icon-header-messages:before {
+	content: "\e660";
+}
+.icon-header-tasks:before {
+	content: "\e661";
+}

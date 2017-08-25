@@ -1,0 +1,17 @@
+<div class="transaction">
+    <div class="transaction-content">
+        <div class="cell-category" style="background:{{transaction.categoryCode}}"></div>
+        <div class="cell-date">{{transaction.dateFormatted}}</div>
+        <div class="cell-img">
+            <img ng-src="{{transaction.merchantLogo}}" ng-if="transaction.merchantLogo" />
+            <img ng-src="images/placeholder.jpg" ng-if="!transaction.merchantLogo" />
+        </div>
+        <div class="cell-name">
+            <h2 class="h-transaction-header">{{transaction.merchant}}</h2>
+            <h3 class="h-transaction-detail">{{transaction.transactionType}}</h3>
+        </div>
+        <div class="cell-amount">
+            -${{transaction.amount}}
+        </div>
+    </div>
+</div>

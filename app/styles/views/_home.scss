@@ -1,0 +1,250 @@
+$headerHeight: 70px;
+
+@import '../modules/header';
+
+#content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: $headerHeight + 50px;
+    padding-bottom: 40px;  
+    
+    @media #{$media-mobile} {
+        padding-top: $headerHeight; 
+            
+        &.main-wrapper {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+@media #{$media-mobile} {
+    .content-bg {
+        background: rgba($black, 0.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0;
+        @include transition(opacity 300ms ease);
+        
+        &.active {
+            pointer-events: all;
+            opacity: 1;
+        }
+    }
+}
+
+.widget-container {
+    width: 100%;
+    height: 100%;
+    min-height: 353px;
+    position: relative;
+    
+    @media #{$media-mobile} {
+        display: block;
+    }
+}
+
+#make-a-transfer {
+    width: $widgetTransfer;
+    //width: 33.333%;
+    float: left;
+    position: relative;
+    z-index: 10;
+    
+    @media #{$media-mobile} {
+        display: block;
+        width: 100%;
+        position: fixed;
+        top: -320px;
+        left: 0;
+        padding: 0;
+        z-index: 20;
+        opacity: 0;
+        @include transition(top 300ms ease, opacity 300ms ease);
+    
+        &.mobile-active {
+            display: block;
+            top: $headerHeight;
+            opacity: 1;
+        }
+    }
+}
+
+#transactions {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-left: ($widgetTransfer + 20px) solid transparent;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    
+    .widget {
+        height: 100%;
+        position: relative;
+    }
+        
+    .widget-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-top: $widgetHeader + 20px;
+        height: 100%;
+        width: 100%;
+        background: transparent;
+    }
+    
+    .cell-sort {
+        text-align: center;
+        width: 360px;
+    }
+    
+    .cell-search {
+        position: relative;
+        
+        input {
+            padding-right: 25px;
+        }
+    }
+    
+    .transaction-sort {
+        padding-bottom: 20px;
+        padding-left: 10px;
+        height: $transactionSort;
+        position: relative;
+        z-index: 10;
+        background: $white;
+        border-bottom: 1px solid $input_gray;
+    }
+    
+    .transaction-list {
+        position: relative;
+        padding-top: $transactionSort;
+        top: -#{$transactionSort};
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        border-bottom: 1px solid $input_gray;
+        border-left: 1px solid $input_gray;
+    }
+    
+    .list-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        overflow-y: auto;
+        border-right: 1px solid $input_gray;
+        padding-bottom: 20px;
+    }
+    
+    .clear-search {
+        background: $input_gray;
+        border-radius: 50%;
+        color: $white;
+        position: absolute;
+        bottom: 7px;
+        right: 0;
+        font-size: 10px;
+        padding: 2px 5px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+    }
+    
+    .sort-by {
+        @include kahit_bold();
+    }
+    
+    .sort-btn {
+        border: 1px solid $input_gray;
+        border-right: none;
+        padding: 7px 20px;
+        text-transform: uppercase;
+        width: 1px;
+        
+        &:last-child {
+            border-right: 1px solid $input_gray;
+        }
+        
+        &.active {
+            padding-left: 17px;
+            padding-right: 23px;
+            background: url('../images/chevron.png') 92% 50% no-repeat;
+            background-size: 10px;
+        }
+        
+        &.inverse.active {
+            background: url('../images/chevron-inverse.png') 92% 50% no-repeat;
+            background-size: 10px;
+        }
+    }
+    
+    @media #{$media-md} {
+        .sort-by {
+            display: none;
+        }
+        
+        .cell-search {
+            padding-right: 10px;
+        }
+        
+        .cell-sort {
+            width: 292px;
+        }
+    }
+    
+    @media #{$media-mobile} {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border-left: none;
+        
+        .transaction-sort {
+            padding-left: 0;
+        }
+        
+        .cell-sort {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .cell-search {
+            display: block;
+            width: 100%;
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+        
+        .widget {
+            box-shadow: none;   
+        }
+        
+        .widget-content {
+            position: relative;
+            padding-top: 20px;
+            height: auto;
+        }
+        
+        .transaction-list {
+            top: 0;
+            padding-top: 0;
+            height: auto;
+            overflow: auto;
+        }
+        
+        .list-container {
+            border-right: none;
+        }
+    }
+}

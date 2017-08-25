@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="backbase" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>BACKBASE INTERVIEW</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- build:css(.tmp) styles/backbase.styles.css -->
+    <link rel="stylesheet" href="styles/backbase.styles.css">
+    <!-- endbuild -->
+
+</head>
+
+<body ng-controller="mainController" mobile-transactions>
+    
+    <!-- Backbase main view -->
+    <div id="backbase-gui" ui-view></div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="lib/lodash/dist/lodash.min.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/directives.js"></script>
+    <script src="scripts/services.js"></script>
+    <!-- endbuild -->
+	
+    
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<div id="header">
+    <div class="main-wrapper">
+        <div class="wrapper_inner">
+            <img src="images/logo.jpg" />
+        </div>
+    </div>
+    <div id="btn-transactions" ng-click="toggleWidget()"></div>
+</div>
+
+<div id="content" class="main-wrapper">
+    <div class="content-bg" ng-click="toggleWidget()" ng-class="{'active': widgetActive}"></div>
+    <div class="wrapper_inner widget-container">
+        <div id="make-a-transfer" ng-class="{'mobile-active': widgetActive}">
+            <div class="widget widget-transfer">
+                <div class="widget-header">
+                    <h2>Make a Transfer</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="input">
+                        <label for="fromAccount">From Account</label>
+                        <input name="fromAccount" type="text" value="Free Checking(4629) - ${{bankAmount}}" disabled/>
+                    </div>
+                    <div class="input" ng-class="{'error': toAccountFlag}">
+                        <label for="toAccount">To Account</label>
+                        <input name="toAccount" type="text" ng-model="toAccount" value="Georgia Power" />
+                        <div class="error-msg">
+                            Please enter an account to transfer to. 
+                        </div>
+                    </div>
+                    <div class="input" ng-class="{'error': transferFlag}">
+                        <label for="amount">Amount</label>
+                        <input type="text" name="amount" ng-model="transferAmount" ui-money-mask="2" />
+                        <div class="error-msg" >
+                            Please enter an amount between $500 and 1 cent
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-footer">
+                    <button class="btn btn-primary" ng-click="submitTransfer()">Submit</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="transactions">
+            <div class="widget widget-transactions">
+                <div class="widget-header">
+                    <h2>Recent Transactions</h2>
+                </div>
+                <div class="widget-content">
+                    <div class="widget-table transaction-sort">
+                        <div class="widget-cell cell-search input">
+                            <input type="text" spellcheck="false" onkeyup="if(event.keyCode == 13)this.blur();" ng-model="search" placeholder="Search by typing..." />
+                            <button class="clear-search" ng-if="search.length" ng-click="clearSearch()">X</button>
+                        </div>
+                        <div class="widget-cell cell-sort">
+                            <div class="widget-table">
+                                <div class="widget-cell sort-by">Sort by</div>
+                                <div class="widget-cell sort-btn" ng-class="{'active': selectedSort === SORT_DATE, 'inverse': inverse}" ng-click="selectSort(SORT_DATE)">Date</div>
+                                <div class="widget-cell sort-btn" ng-class="{'active': selectedSort === SORT_BENEFICIARY, 'inverse': inverse}" ng-click="selectSort(SORT_BENEFICIARY)">Beneficiary</div>
+                                <div class="widget-cell sort-btn" ng-class="{'active': selectedSort === SORT_AMOUNT, 'inverse': inverse}" ng-click="selectSort(SORT_AMOUNT)">Amount</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="transaction-list">
+                        <div class="list-container">
+                            <transaction ng-repeat="transaction in transactions | filterTransactions:search:selectedSort:inverse"></transaction>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

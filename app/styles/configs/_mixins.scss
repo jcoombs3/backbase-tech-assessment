@@ -1,0 +1,210 @@
+// ----------------------------------
+// MIXINS
+// ----------------------------------
+* {
+  box-sizing:border-box;
+  user-select:none;
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+    //-webkit-user-modify: read-only;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    -webkit-tap-highlight-color: transparent;  // i.e. Nexus5/Chrome and Kindle Fire HD 7''
+    &:focus {
+        outline: 0;
+        //border:none;
+        //color: rgba(0, 0, 0, 0);
+    }
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+@mixin text-shadow($string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+  text-shadow: $string;
+}
+@mixin box-shadow($string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+  -webkit-box-shadow: $string;
+  -moz-box-shadow: $string;
+  box-shadow: $string;
+}
+@mixin drop-shadow($x: 0, $y: 1px, $blur: 2px, $spread: 0, $rgba: rgba(0,0,0,0.25)) {
+  -webkit-box-shadow: $x $y $blur $spread $rgba;
+  -moz-box-shadow: $x $y $blur $spread $rgba;
+  box-shadow: $x $y $blur $spread $rgba;
+}
+@mixin inner-shadow($x: 0, $y: 1px, $blur: 2px, $spread: 0, $alpha: 0.25) {
+  -webkit-box-shadow: inset $x $y $blur $spread rgba(0, 0, 0, $alpha);
+  -moz-box-shadow: inset $x $y $blur $spread rgba(0, 0, 0, $alpha);
+  box-shadow: inset $x $y $blur $spread rgba(0, 0, 0, $alpha);
+}
+@mixin box-sizing($type: border-box) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing:    $type;
+  box-sizing:         $type;
+}
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+  border-radius:         $radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+@mixin border-radiuses($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0) {
+  -webkit-border-top-right-radius:    $topright;
+  -webkit-border-bottom-right-radius: $bottomright;
+  -webkit-border-bottom-left-radius:  $bottomleft;
+  -webkit-border-top-left-radius:     $topleft;
+
+  -moz-border-radius-topright:        $topright;
+  -moz-border-radius-bottomright:     $bottomright;
+  -moz-border-radius-bottomleft:      $bottomleft;
+  -moz-border-radius-topleft:         $topleft;
+
+  border-top-right-radius:            $topright;
+  border-bottom-right-radius:         $bottomright;
+  border-bottom-left-radius:          $bottomleft;
+  border-top-left-radius:             $topleft;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+@mixin opacity($opacity: 0.5) {
+  -webkit-opacity: $opacity;
+  -moz-opacity: $opacity;
+  opacity: $opacity;
+}
+@mixin linear-gradient($startcolor, $stopcolor) {
+  @include linear-gradient-top($startcolor, $stopcolor);
+}
+@mixin linear-gradient-top($startcolor, $stopcolor) {
+  background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0, $startcolor), color-stop(1, $stopcolor));//for old webkit syntax
+  @include gradient($startcolor, $stopcolor, 180deg, mix($startcolor, $stopcolor, 60%));
+}
+@mixin linear-gradient-top-three($startcolor, $middlecolor, $stopcolor) {
+  background-color: $middlecolor;
+  background: -moz-linear-gradient(top, $startcolor 0%, $middlecolor 50%, $stopcolor 100%);
+  background: -webkit-linear-gradient(linear, left top, left bottom, color-stop(0%,$startcolor), color-stop(50%,$middlecolor), color-stop(100%,$stopcolor));
+  background: -webkit-linear-gradient(top, $startcolor 0%, $middlecolor 50%, $stopcolor 100%);
+  background: -o-linear-gradient(top, $startcolor 0%, $middlecolor 50%, $stopcolor 100%);
+  background: -ms-linear-gradient(top, $startcolor 0%, $middlecolor 50%, $stopcolor 100%);
+  background: linear-gradient(to bottom, $startcolor 0%, $middlecolor 50%, $stopcolor 100%);
+}
+@mixin linear-gradient-left($startcolor, $stopcolor) {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, $startcolor), color-stop(1, $stopcolor));//for old webkit syntax
+  @include gradient($startcolor, $stopcolor, 90deg, mix($startcolor, $stopcolor, 60%));
+}
+@mixin linear-gradient-top-diagonal($startcolor, $stopcolor) {
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, $startcolor), color-stop(1, $stopcolor));//for old webkit syntax
+  @include gradient($startcolor, $stopcolor, 135deg, mix($startcolor, $stopcolor, 60%));
+}
+@mixin linear-gradient-bottom-diagonal($startcolor, $stopcolor) {
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, $startcolor), color-stop(1, $stopcolor));//for old webkit syntax
+  @include gradient($startcolor, $stopcolor, 45deg, mix($startcolor, $stopcolor, 60%));
+}
+@mixin gradient($startcolor, $stopcolor, $angle, $backgroundcolor) {
+  background-color: $backgroundcolor;
+  background-image: -webkit-linear-gradient(450 - $angle, $startcolor, $stopcolor);
+  background-image: -o-linear-gradient(450 - $angle, $startcolor, $stopcolor);
+  background-image: -moz-linear-gradient(450 - $angle, $startcolor, $stopcolor);
+  background-image: linear-gradient($angle, $startcolor, $stopcolor);
+}
+@mixin radial-gradient($innercolor, $outercolor) {
+  background: radial-gradient($innercolor 0%, $innercolor 40%, $outercolor 95%);
+  // Opera does not support radial gradient
+}
+@mixin radial-gradient-soft($innercolor, $outercolor) {
+  background: radial-gradient($innercolor 0%, $innercolor 20%, $outercolor 60%);
+  // Opera does not support radial gradient
+}
+@mixin radial-gradient-hard($innercolor, $outercolor) {
+  background: radial-gradient($innercolor 0%, $innercolor 62%, $outercolor 95%);
+  // Opera does not support radial gradient
+}
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition:    $transition;
+  -ms-transition:     $transition;
+  -o-transition:      $transition;
+}
+@mixin rotation($deg) {
+  -webkit-transform: rotate($deg);
+  -moz-transform:    rotate($deg);
+  -ms-transform:     rotate($deg);
+  -o-transform:      rotate($deg);
+}
+@mixin transform-origin($x:center, $y:center) {
+  -webkit-transform-origin: $x $y;
+  -moz-transform-origin:    $x $y;
+  -ms-transform-origin:     $x $y;
+  -o-transform-origin:      $x $y;
+}
+@mixin box-reflect($direction: below, $padding: 0px, $stop: 60%) {
+  -webkit-box-reflect: $direction $padding -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop($stop, transparent), to(rgba(255, 255, 255, 0.5)));
+}
+
+@mixin striped-bg($bg-color: #ccc, $darken-amount: 5%, $stripe-color: darken($bg-color, $darken-amount)){
+  background-color: $bg-color;
+  @include background-image(linear-gradient(-45deg, $stripe-color 25%, transparent 25%, transparent 50%, $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent));
+  background-size: 40px 40px;
+}
+// ----------------------------------
+// ALIGNMENT
+
+@mixin absolute-center($abCW, $abCH){
+  width: $abCW;
+  height: $abCH;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -($abCH/2);
+  margin-left: -($abCW/2);
+}
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+@mixin horizontal-align {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+@mixin center-align {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+@mixin no-align {
+  position: inherit;
+  top: 0;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+@mixin calc($property, $expression) { 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: calc(#{$expression}); 
+} 
